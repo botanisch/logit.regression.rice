@@ -2,7 +2,7 @@
 
 This repository contains a data set attached to the following manuscript titled "Classifying Asian Rice Cultivars (Oryza sativa L.) into Indica and Japonica Using Logistic Regression Model with Publicly Available Phenotypic Data", authored by Bongsong Kim.
 
-To run R code in each R file, copy R code in a file and paste into your R terminal. No need to download the related data files.
+To run R code in each R file, copy R code in a file and paste into your R terminal. No need to download the related input files.
 
 If you publish any articles using the data sets named "RiceDiversity_44K_Phenotypes_34traits_PLINK.txt" and "ricediversity.44k.germplasm3.csv" for your resesarch, please use the following citation:
 
