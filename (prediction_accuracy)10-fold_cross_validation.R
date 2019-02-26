@@ -36,7 +36,7 @@ cnt <- 0
          tra_sam <- pop[-1* c(st:en)]
      
          dat22 <- dat2[tra_sam,]    
-         fit <- glm(Sub.population ~ Panicle.number.per.plant + Seed.number.per.panicle + Florets.per.panicle + Panicle.fertility + Straighthead.suseptability + Blast.resistance + Protein.content,data=dat2,family=binomial(link = "logit"))  
+         fit <- glm(Sub.population ~ Panicle.number.per.plant + Seed.number.per.panicle + Florets.per.panicle + Panicle.fertility + Straighthead.suseptability + Blast.resistance + Protein.content,data=dat2,family=binomial(link = "logit"),control = list(maxit = 100))  
          summary(fit)
 
 
