@@ -19,12 +19,13 @@ phen2 <- dat2$Seed.number.per.panicle
 phen3 <- dat2$Florets.per.panicle
 phen4 <- dat2$Panicle.fertility 
 phen5 <- dat2$Straighthead.suseptability
-phen6 <- dat2$Blast.resistance    
-fit <- glm(dat2$Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6,family=binomial(link = "logit"))
+phen6 <- dat2$Blast.resistance  
+phen7 <- dat2$Protein.content
+fit <- glm(dat2$Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6 + phen7,data=dat2,family=binomial(link = "logit"),control = list(maxit = 100))
 summary(fit) 
 
 logit <- function(x1,x2,x3,x4,x5,x6){       
-res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] ))); return(res) 
+res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] + x7*coefficients(fit)[8]))); return(res) 
        } 
 
 
