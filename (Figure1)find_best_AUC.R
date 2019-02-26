@@ -437,3 +437,53 @@
     AUC <- roc(response, logit.res, plot=TRUE, direction="<")  
     AUC
 
+
+
+#### seven predictors   
+
+ temp  <- NULL
+ cnt   <- 0
+ lines <- NULL
+ res   <- NULL
+ for (i in 15:32){
+ for (j in (i+1):33){
+ for (k in (j+1):34){ 
+ for (m in (k+1):35){
+ for (n in (m+1):36){
+ for (p in (n+1):37){ 
+ for (q in (p+1):38){                     
+            
+   phen1 <- dat2[,i]
+   phen2 <- dat2[,j]
+   phen3 <- dat2[,k]
+   phen4 <- dat2[,m]
+   phen5 <- dat2[,n]
+   phen6 <- dat2[,p]       
+   phen7 <- dat2[,q]       
+
+
+   fit <- glm(Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6 + phen7, data=dat2,family=binomial(link = "logit"))
+   summary(fit) 
+
+
+   logit <- function(x1,x2,x3,x4,x5,x6,x7){       
+   res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7]  + x7*coefficients(fit)[8] ))); return(res) 
+   }     
+   logit.res <- logit(phen1,phen2,phen3,phen4,phen5,phen6,phen7)      
+
+   response <- rep(0,dim(dat2)[1])
+   response[ which(dat2$Sub.population == "JAP") ] <- 1
+   response  <- response[-1 * which(is.na(logit.res) == T)]
+   logit.res <- logit.res[-1 * which(is.na(logit.res) == T)]
+   res <- roc(response, logit.res, plot=TRUE, direction="<")     
+
+
+   cnt       <- cnt + 1
+   temp[cnt] <- res$auc[1]
+   lines[cnt] <- paste(res$auc[1], colnames(dat2)[i], colnames(dat2)[j], colnames(dat2)[k], colnames(dat2)[m], colnames(dat2)[n], colnames(dat2)[p], colnames(dat2)[q], sep="\t")
+   cat(lines[cnt])
+   cat("\n") 
+ }}}}}}}
+
+
+
