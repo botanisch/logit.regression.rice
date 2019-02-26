@@ -36,17 +36,17 @@ cnt <- 0
          tra_sam <- pop[-1* c(st:en)]
      
          dat22 <- dat2[tra_sam,]    
-         fit <- glm(Sub.population ~ Panicle.number.per.plant + Seed.number.per.panicle + Florets.per.panicle + Panicle.fertility + Straighthead.suseptability + Blast.resistance ,data=dat2,family=binomial(link = "logit"))  
+         fit <- glm(Sub.population ~ Panicle.number.per.plant + Seed.number.per.panicle + Florets.per.panicle + Panicle.fertility + Straighthead.suseptability + Blast.resistance + Protein.content,data=dat2,family=binomial(link = "logit"))  
          summary(fit)
 
 
-         logit <- function(x1, x2, x3, x4, x5, x6){  
-         res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4]  + x4*coefficients(fit)[5]  + x5*coefficients(fit)[6]  + x6*coefficients(fit)[7] )))  
+         logit <- function(x1, x2, x3, x4, x5, x6, x7){  
+         res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] + x7*coefficients(fit)[8] )))  
          return(res)
          }     
 
          val_sam <- c(1:dim(dat2)[1])[ -1 * tra_sam]
-         logit.res <- logit(dat2$Panicle.number.per.plant[val_sam], dat2$Seed.number.per.panicle[val_sam], dat2$Florets.per.panicle[val_sam], dat2$Panicle.fertility[val_sam], dat2$Straighthead.suseptability[val_sam], dat2$Blast.resistance[val_sam])
+         logit.res <- logit(dat2$Panicle.number.per.plant[val_sam], dat2$Seed.number.per.panicle[val_sam], dat2$Florets.per.panicle[val_sam], dat2$Panicle.fertility[val_sam], dat2$Straighthead.suseptability[val_sam], dat2$Blast.resistance[val_sam], dat2$Protein.content[val_sam])
 
         rr <- cbind(logit.res,dat2$Sub.population[val_sam])
         sorted.logit.res <- rr[match(sort(logit.res),rr),]
