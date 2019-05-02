@@ -1,8 +1,11 @@
 
 # variable interactions
 
- 
+  install.packages("RCurl")                  
+  require(RCurl)
 
+  install.packages("iml")                  
+  require(iml)
 
   dat <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/logit.regression.rice/master/ricediversity.44k.germplasm3.csv"),header=T)   
   phe <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/logit.regression.rice/master/RiceDiversity_44K_Phenotypes_34traits_PLINK.txt"),header=T)
