@@ -40,12 +40,6 @@ phen4 <- dat3$Panicle.fertility
 phen5 <- dat3$Straighthead.suseptability
 phen6 <- dat3$Blast.resistance
 phen7 <- dat3$Protein.content
-fit <- glm(dat2$Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6 + phen7,data=dat2,family=binomial(link = "logit"),control = list(maxit = 100))
-summary(fit) 
-
-logit <- function(x1,x2,x3,x4,x5,x6,x7){       
-res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] + x7*coefficients(fit)[8]))); return(res) 
-       } 
 
 logit.res <- logit(phen1,phen2,phen3,phen4,phen5,phen6,phen7)
 
@@ -67,12 +61,6 @@ phen4 <- dat4$Panicle.fertility
 phen5 <- dat4$Straighthead.suseptability
 phen6 <- dat4$Blast.resistance    
 phen7 <- dat4$Protein.content
-fit <- glm(dat2$Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6 + phen7,data=dat2,family=binomial(link = "logit"),control = list(maxit = 100))
-summary(fit) 
-
-logit <- function(x1,x2,x3,x4,x5,x6,x7){       
-res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] + x7*coefficients(fit)[8]))); return(res) 
-       } 
 
 logit.res <- logit(phen1,phen2,phen3,phen4,phen5,phen6,phen7)
 
@@ -94,12 +82,6 @@ phen4 <- dat5$Panicle.fertility
 phen5 <- dat5$Straighthead.suseptability
 phen6 <- dat5$Blast.resistance    
 phen7 <- dat5$Protein.content
-fit <- glm(dat2$Sub.population ~ phen1 + phen2 + phen3 + phen4 + phen5 + phen6 + phen7,data=dat2,family=binomial(link = "logit"),control = list(maxit = 100))
-summary(fit) 
-
-logit <- function(x1,x2,x3,x4,x5,x6,x7){       
-res <- 1/(1 + exp( -1* (coefficients(fit)[1] + x1*coefficients(fit)[2] + x2*coefficients(fit)[3] + x3*coefficients(fit)[4] + x4*coefficients(fit)[5] + x5*coefficients(fit)[6] + x6*coefficients(fit)[7] + x7*coefficients(fit)[8]))); return(res) 
-       } 
 
 logit.res <- logit(phen1,phen2,phen3,phen4,phen5,phen6,phen7)
 
